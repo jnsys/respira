@@ -13,7 +13,7 @@
     "build:icons": "tsx plugins/iconify/build-icons.js",
     "postinstall": "nuxt prepare && npm run build:icons ",
     "generate": "nuxt generate",
-    "start": "AUTH_SECRET=6803a0167cb80e9dc085a7ed9cc283b8 AUTH_ORIGIN=https://urchin-app-rq9ln.ondigitalocean.app node .output/server/index.mjs"
+    "start": "AUTH_SECRET=6803a0167cb80e9dc085a7ed9cc283b8 AUTH_ORIGIN=https://goldfish-app-x95ep.ondigitalocean.app node .output/server/index.mjs"
   },
   "dependencies": {
     "@casl/ability": "6.7.1",
