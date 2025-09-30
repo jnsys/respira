@@ -313,10 +313,15 @@
       "verifyAnother": "验证其他产品",
       "downloadCertificate": "下载证书",
       "tryAgain": "重试",
+      "stopScan": "停止扫描",
+      "scannerTitle": "二维码扫描器",
+      "scannerInstructions": "将相机对准二维码进行扫描",
       "messages": {
         "genuine": "恭喜！这是正品 RESPIRA+ 产品。",
         "fake": "警告：此产品可能是假冒产品。请联系客户支持。",
-        "cameraNotSupported": "不支持相机访问。请手动输入序列号。"
+        "cameraNotSupported": "不支持相机访问。请手动输入序列号。",
+        "cameraAccessDenied": "相机访问被拒绝。请允许相机访问并重试。",
+        "requiresHttps": "相机访问需要安全连接（HTTPS）。请使用 HTTPS 或 localhost。"
       },
       "errors": {
         "emptyInput": "请输入序列号或扫描二维码。"

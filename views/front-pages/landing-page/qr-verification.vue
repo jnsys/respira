@@ -1,10 +1,18 @@
 <script setup>
+// import { Html5QrcodeScanner } from "html5-qrcode";
 const { t } = useI18n();
 
 // QR verification states
 const qrInput = ref("");
 const verificationResult = ref(null);
 const isLoading = ref(false);
+const isScanning = ref(false);
+const scanner = ref(null);
+const scanContainer = ref(null);
+const Html5QrcodeScanner = ref(null);
+const availableCameras = ref([]);
+const selectedCameraId = ref(null);
+const cameraPermissionGranted = ref(false);
 
 // Sample verification logic (replace with actual API call)
 const verifyProduct = async () => {
@@ -54,10 +62,172 @@ const resetVerification = () => {
   isLoading.value = false;
 };
 
-const handleScan = () => {
-  // In a real implementation, this would open the device camera for QR scanning
-  alert(t("Landing Page.qrVerification.messages.cameraNotSupported"));
+// Enumerate available cameras
+const enumerateCameras = async () => {
+  try {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+      return [];
+    }
+
+    // Request permission first to get device labels
+    await navigator.mediaDevices.getUserMedia({ video: true });
+    cameraPermissionGranted.value = true;
+
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const videoDevices = devices.filter(
+      (device) => device.kind === "videoinput"
+    );
+
+    availableCameras.value = videoDevices.map((device) => ({
+      deviceId: device.deviceId,
+      label: device.label || `Camera ${device.deviceId.slice(0, 8)}`,
+      kind: device.kind,
+    }));
+
+    // Select the first available camera or prefer back camera
+    const backCamera = videoDevices.find(
+      (device) =>
+        device.label.toLowerCase().includes("back") ||
+        device.label.toLowerCase().includes("rear")
+    );
+
+    selectedCameraId.value = backCamera?.deviceId || videoDevices[0]?.deviceId;
+
+    return availableCameras.value;
+  } catch (error) {
+    console.error("Error enumerating cameras:", error);
+    cameraPermissionGranted.value = false;
+    return [];
+  }
 };
+
+const handleScan = async () => {
+  if (isScanning.value) {
+    stopScanning();
+    return;
+  }
+
+  try {
+    // Check if we're on client side
+    if (process.client) {
+      // Check if camera is supported and we're in a secure context
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        alert(t("Landing Page.qrVerification.messages.cameraNotSupported"));
+        return;
+      }
+
+      // Check if we're in a secure context (HTTPS or localhost)
+      if (!window.isSecureContext) {
+        alert(t("Landing Page.qrVerification.messages.requiresHttps"));
+        return;
+      }
+
+      // Enumerate available cameras first
+      const cameras = await enumerateCameras();
+      if (cameras.length === 0) {
+        alert(t("Landing Page.qrVerification.messages.noCamerasFound"));
+        return;
+      }
+
+      // Dynamically import the library only on client side
+      if (!Html5QrcodeScanner.value) {
+        const { Html5QrcodeScanner } = await import("html5-qrcode");
+        Html5QrcodeScanner.value = Html5QrcodeScanner;
+      }
+
+      isScanning.value = true;
+
+      // Wait for next tick to ensure DOM is ready
+      await nextTick();
+
+      // Create scanner instance with specific camera
+      scanner.value = new Html5QrcodeScanner.value(
+        "qr-reader",
+        {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+          aspectRatio: 1.0,
+          showTorchButtonIfSupported: true,
+          showZoomSliderIfSupported: true,
+          supportedScanTypes: [
+            Html5QrcodeScanner.value.ScanType.SCAN_TYPE_CAMERA,
+          ],
+        },
+        false
+      );
+
+      // Start scanning with selected camera
+      scanner.value.render(
+        (decodedText) => {
+          // QR code detected
+          qrInput.value = decodedText;
+          stopScanning();
+
+          // Automatically verify the scanned code
+          setTimeout(() => {
+            verifyProduct();
+          }, 500);
+        },
+        (error) => {
+          // Scanning error (usually just no QR code detected)
+          console.log("QR scan error:", error);
+        }
+      );
+    } else {
+      alert(t("Landing Page.qrVerification.messages.cameraNotSupported"));
+    }
+  } catch (error) {
+    console.error("Camera access error:", error);
+    isScanning.value = false;
+    if (error.name === "NotAllowedError") {
+      alert(t("Landing Page.qrVerification.messages.cameraAccessDenied"));
+    } else if (error.name === "NotFoundError") {
+      alert(t("Landing Page.qrVerification.messages.noCamerasFound"));
+    } else {
+      alert(t("Landing Page.qrVerification.messages.cameraError"));
+    }
+  }
+};
+
+const stopScanning = () => {
+  if (scanner.value) {
+    scanner.value.clear();
+    scanner.value = null;
+  }
+  isScanning.value = false;
+};
+
+// Helper functions
+const getSelectedCameraLabel = () => {
+  const selectedCamera = availableCameras.value.find(
+    (camera) => camera.deviceId === selectedCameraId.value
+  );
+  return (
+    selectedCamera?.label || $t("Landing Page.qrVerification.unknownCamera")
+  );
+};
+
+const onCameraChange = () => {
+  if (isScanning.value) {
+    stopScanning();
+    // Restart scanning with new camera
+    setTimeout(() => {
+      handleScan();
+    }, 500);
+  }
+};
+
+// Initialize cameras on component mount
+onMounted(async () => {
+  if (process.client) {
+    await enumerateCameras();
+  }
+});
+
+// Cleanup on component unmount
+onUnmounted(() => {
+  stopScanning();
+});
 </script>
 
 <template>
@@ -150,19 +320,74 @@ const handleScan = () => {
 
                 <VCol cols="12" sm="6">
                   <VBtn
-                    color="secondary"
+                    :color="isScanning ? 'error' : 'secondary'"
                     variant="outlined"
                     size="large"
                     block
                     @click="handleScan"
                     :disabled="isLoading"
                   >
-                    <VIcon start icon="tabler-camera" />
-                    {{ $t("Landing Page.qrVerification.scanButton") }}
+                    <VIcon :start="!isScanning" icon="tabler-camera" />
+                    {{
+                      isScanning
+                        ? $t("Landing Page.qrVerification.stopScan")
+                        : $t("Landing Page.qrVerification.scanButton")
+                    }}
                   </VBtn>
                 </VCol>
               </VRow>
             </VForm>
+
+            <!-- Camera Selection (shown when multiple cameras available) -->
+            <div
+              v-if="availableCameras.length > 1 && cameraPermissionGranted"
+              class="camera-selection mt-4"
+            >
+              <VSelect
+                v-model="selectedCameraId"
+                :items="availableCameras"
+                item-title="label"
+                item-value="deviceId"
+                :label="$t('Landing Page.qrVerification.selectCamera')"
+                variant="outlined"
+                density="comfortable"
+                @update:model-value="onCameraChange"
+              />
+            </div>
+
+            <!-- QR Scanner Container -->
+            <div v-if="isScanning" class="qr-scanner-container mt-6">
+              <div class="text-center mb-4">
+                <h6
+                  class="text-h6 mb-2"
+                  style="color: rgb(var(--v-theme-primary))"
+                >
+                  {{ $t("Landing Page.qrVerification.scannerTitle") }}
+                </h6>
+                <p
+                  class="text-body-2 mb-0"
+                  style="color: rgb(var(--v-theme-on-surface)); opacity: 0.8"
+                >
+                  {{ $t("Landing Page.qrVerification.scannerInstructions") }}
+                </p>
+                <div v-if="availableCameras.length > 0" class="mt-2">
+                  <VChip size="small" color="primary" variant="tonal">
+                    <VIcon start icon="tabler-camera" size="16" />
+                    {{ getSelectedCameraLabel() }}
+                  </VChip>
+                </div>
+              </div>
+              <div
+                ref="scanContainer"
+                id="qr-reader"
+                style="
+                  border-radius: 12px;
+                  overflow: hidden;
+                  background: rgba(var(--v-theme-surface));
+                  border: 2px solid rgba(var(--v-theme-primary-rgb), 0.2);
+                "
+              ></div>
+            </div>
 
             <!-- Verification Result -->
             <div v-if="verificationResult" class="verification-result mt-6">

@@ -313,10 +313,15 @@
       "verifyAnother": "Sahkan Produk Lain",
       "downloadCertificate": "Muat Turun Sijil",
       "tryAgain": "Cuba Lagi",
+      "stopScan": "Hentikan Pengimbasan",
+      "scannerTitle": "Pengimbas Kod QR",
+      "scannerInstructions": "Arahkan kamera anda ke kod QR untuk mengimbas",
       "messages": {
         "genuine": "Tahniah! Ini adalah produk RESPIRA+ yang asli.",
         "fake": "Amaran: Produk ini mungkin palsu. Sila hubungi sokongan pelanggan.",
-        "cameraNotSupported": "Akses kamera tidak disokong. Sila masukkan nombor siri secara manual."
+        "cameraNotSupported": "Akses kamera tidak disokong. Sila masukkan nombor siri secara manual.",
+        "cameraAccessDenied": "Akses kamera ditolak. Sila benarkan akses kamera dan cuba lagi.",
+        "requiresHttps": "Akses kamera memerlukan sambungan selamat (HTTPS). Sila gunakan HTTPS atau localhost."
       },
       "errors": {
         "emptyInput": "Sila masukkan nombor siri atau imbas kod QR."

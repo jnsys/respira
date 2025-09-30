@@ -313,10 +313,19 @@
       "verifyAnother": "Verify Another Product",
       "downloadCertificate": "Download Certificate",
       "tryAgain": "Try Again",
+      "stopScan": "Stop Scanning",
+      "scannerTitle": "QR Code Scanner",
+      "scannerInstructions": "Point your camera at the QR code to scan",
+      "selectCamera": "Select Camera",
+      "unknownCamera": "Unknown Camera",
       "messages": {
         "genuine": "Congratulations! This is a genuine RESPIRA+ product.",
         "fake": "Warning: This product may be counterfeit. Please contact customer support.",
-        "cameraNotSupported": "Camera access not supported. Please enter the serial number manually."
+        "cameraNotSupported": "Camera access not supported. Please enter the serial number manually.",
+        "cameraAccessDenied": "Camera access denied. Please allow camera access and try again.",
+        "requiresHttps": "Camera access requires a secure connection (HTTPS). Please use HTTPS or localhost.",
+        "noCamerasFound": "No cameras found on this device.",
+        "cameraError": "An error occurred while accessing the camera."
       },
       "errors": {
         "emptyInput": "Please enter a serial number or scan a QR code."
