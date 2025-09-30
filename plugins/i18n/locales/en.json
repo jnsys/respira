@@ -1,0 +1,388 @@
+{
+  "UI Elements": "UI Elements",
+  "Forms & Tables": "Forms & Tables",
+  "Pages": "Pages",
+  "Charts & Maps": "Charts & Maps",
+  "Others": "Others",
+  "Typography": "Typography",
+  "Cards": "Cards",
+  "Basic": "Basic",
+  "Advance": "Advance",
+  "Widgets": "Widgets",
+  "Components": "Components",
+  "Alert": "Alert",
+  "Close Alert": "Close Alert",
+  "Avatar": "Avatar",
+  "Badge": "Badge",
+  "Button": "Button",
+  "Calendar": "Calendar",
+  "Kanban": "Kanban",
+  "Image": "Image",
+  "Pagination": "Pagination",
+  "Progress Circular": "Progress Circular",
+  "Progress Linear": "Progress Linear",
+  "Autocomplete": "Autocomplete",
+  "Tooltip": "Tooltip",
+  "Slider": "Slider",
+  "Date Time Picker": "Date Time Picker",
+  "Select": "Select",
+  "Switch": "Switch",
+  "Checkbox": "Checkbox",
+  "Radio": "Radio",
+  "Textarea": "Textarea",
+  "Rating": "Rating",
+  "File Input": "File Input",
+  "Otp Input": "Otp Input",
+  "Form Layout": "Form Layout",
+  "Form Validation": "Form Validation",
+  "Charts": "Charts",
+  "Apex Chart": "Apex Chart",
+  "Chartjs": "Chartjs",
+  "Account Settings": "Account Settings",
+  "User Profile": "User Profile",
+  "FAQ": "FAQ",
+  "Dialog Examples": "Dialog Examples",
+  "Pricing": "Pricing",
+  "List": "List",
+  "Edit": "Edit",
+  "Nav Levels": "Nav Levels",
+  "Level 2.1": "Level 2.1",
+  "Level 2.2": "Level 2.2",
+  "Level 3.1": "Level 3.1",
+  "Level 3.2": "Level 3.2",
+  "Raise Support": "Raise Support",
+  "Documentation": "Documentation",
+  "Dashboards": "Dashboards",
+  "Analytics": "Analytics",
+  "Apps & Pages": "Apps & Pages",
+  "Email": "Email",
+  "Chat": "Chat",
+  "Invoice": "Invoice",
+  "Preview": "Preview",
+  "Add": "Add",
+  "User": "User",
+  "View": "View",
+  "Login v1": "Login v1",
+  "Login v2": "Login v2",
+  "Login": "Login",
+  "Register v1": "Register v1",
+  "Register v2": "Register v2",
+  "Register": "Register",
+  "Forget Password v1": "Forget Password v1",
+  "Forget Password v2": "Forget Password v2",
+  "Forgot Password v1": "Forgot Password v1",
+  "Forgot Password v2": "Forgot Password v2",
+  "Forgot Password": "Forgot Password",
+  "Reset Password v1": "Reset Password v1",
+  "Reset Password v2": "Reset Password v2",
+  "Reset Password": "Reset Password",
+  "Miscellaneous": "Miscellaneous",
+  "Coming Soon": "Coming Soon",
+  "Not Authorized": "Not Authorized",
+  "Under Maintenance": "Under Maintenance",
+  "Error": "Error",
+  "Statistics": "Statistics",
+  "Actions": "Actions",
+  "Access Control": "Access Control",
+  "User Interface": "User Interface",
+  "CRM": "CRM",
+  "eCommerce": "eCommerce",
+  "Icons": "Icons",
+  "Chip": "Chip",
+  "Dialog": "Dialog",
+  "Expansion Panel": "Expansion Panel",
+  "Combobox": "Combobox",
+  "Textfield": "Textfield",
+  "Range Slider": "Range Slider",
+  "Menu": "Menu",
+  "Snackbar": "Snackbar",
+  "Tabs": "Tabs",
+  "Form Elements": "Form Elements",
+  "Form Layouts": "Form Layouts",
+  "Authentication": "Authentication",
+  "Page Not Found - 404": "Page Not Found - 404",
+  "Not Authorized - 401": "Not Authorized - 401",
+  "Server Error - 500": "Server Error - 500",
+  "2": "2",
+  "Forms": "Forms",
+  "Timeline": "Timeline",
+  "Disabled Menu": "Disabled Menu",
+  "Help Center": "Help Center",
+  "Verify Email": "Verify Email",
+  "Verify Email v1": "Verify Email v1",
+  "Verify Email v2": "Verify Email v2",
+  "Two Steps": "Two Steps",
+  "Two Steps v1": "Two Steps v1",
+  "Two Steps v2": "Two Steps v2",
+  "Custom Input": "Custom Input",
+  "Extensions": "Extensions",
+  "Tour": "Tour",
+  "Register Multi-Steps": "Register Multi-Steps",
+  "Wizard Examples": "Wizard Examples",
+  "Checkout": "Checkout",
+  "Create Deal": "Create Deal",
+  "Property Listing": "Property Listing",
+  "Roles & Permissions": "Roles & Permissions",
+  "Roles": "Roles",
+  "Simple Table": "Simple Table",
+  "Tables": "Tables",
+  "Data Table": "Data Table",
+  "Permissions": "Permissions",
+  "Apps": "Apps",
+  "Misc": "Misc",
+  "Wizard Pages": "Wizard Pages",
+  "Form Wizard": "Form Wizard",
+  "Numbered": "Numbered",
+  "3": "3",
+  "ecommerce": "ecommerce",
+  "Ecommerce": "Ecommerce",
+  "Editors": "Editors",
+  "Front Pages": "Front Pages",
+  "Landing": "Landing",
+  "checkout": "checkout",
+  "Payment": "Payment",
+  "Swiper": "Swiper",
+  "Product": "Product",
+  "Category": "Category",
+  "Order": "Order",
+  "Details": "Details",
+  "Customer": "Customer",
+  "Manage Review": "Manage Review",
+  "Referrals": "Referrals",
+  "Settings": "Settings",
+  "Overview": "Overview",
+  "My Course": "My Course",
+  "Course Details": "Course Details",
+  "Academy": "Academy",
+  "Logistics": "Logistics",
+  "Dashboard": "Dashboard",
+  "Fleet": "Fleet",
+  "5": "5",
+  "10": "10",
+  "20": "20",
+  "25": "25",
+  "50": "50",
+  "100": "100",
+  "Landing Page": {
+    "navigation": {
+      "home": "Home",
+      "products": "Products",
+      "whyChoose": "Why Choose",
+      "aboutUs": "About Us",
+      "qrVerification": "Verify Product",
+      "contact": "Contact us"
+    },
+    "hero": {
+      "tagline": "RESPIRA+ — Pure Breath, Pure Life",
+      "title": "Experience the refreshing taste of 100% herbal extracts",
+      "subtitle": "Zero nicotine, pure enjoyment. Discover our collection of premium herbal vapor products designed for a healthier lifestyle.",
+      "shopNow": "Shop Now"
+    },
+    "products": {
+      "title": "Our Products",
+      "subtitle": "Discover our collection of 100% herbal extracts",
+      "description": "Discover our collection of 100% herbal extract flavors",
+      "items": {
+        "goldenSweet": {
+          "name": "Golden Sweet",
+          "flavor": "Hami Melon",
+          "tagline": "Breathe Freely, Live Fully"
+        },
+        "easyBreathe": {
+          "name": "Easy Breathe",
+          "flavor": "Mint",
+          "tagline": "Fresh cooling effect, clears the mind"
+        },
+        "summerBreeze": {
+          "name": "Summer Breeze",
+          "flavor": "Watermelon",
+          "tagline": "Sweet fruity aroma, refreshing sensation"
+        },
+        "calmDream": {
+          "name": "Calm Dream",
+          "flavor": "Lavender",
+          "tagline": "Relaxation & calming benefits"
+        },
+        "zestySpark": {
+          "name": "Zesty Spark",
+          "flavor": "Lemon",
+          "tagline": "Uplifting citrus burst, energizing"
+        },
+        "pureFresh": {
+          "name": "Pure Fresh",
+          "flavor": "Green Grape",
+          "tagline": "Crisp & juicy grape flavor, refreshing feel"
+        }
+      },
+      "features": {
+        "pureExtract": "100% Pure Herbal Extract",
+        "coldExtract": "Cold Extract",
+        "noNicotine": "0% Nicotine",
+        "herbalExtract": "100% Herbal Extract"
+      }
+    },
+    "whyChoose": {
+      "title": "Why Choose RESPIRA+",
+      "subtitle": "Discover what makes RESPIRA+ the perfect choice for a pure, refreshing experience",
+      "features": {
+        "noNicotine": "Non-Addictive",
+        "natural": "Herbal Extract",
+        "portable": "Stylish Design",
+        "safe": "Refreshing"
+      },
+      "descriptions": {
+        "noNicotine": "Enjoy a pure experience without harmful substances. Our products contain zero nicotine and tar, making them completely non-addictive.",
+        "natural": "Made from carefully selected natural herbs and plants. Pure, organic ingredients for the ultimate refreshing experience.",
+        "portable": "Compact, lightweight design that fits perfectly in your pocket. Easy to use with a sleek, modern aesthetic.",
+        "safe": "Tested for safety and purity. Experience a clean, refreshing sensation that invigorates your senses naturally."
+      },
+      "cta": "Join thousands of satisfied customers who have made the switch to RESPIRA+"
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Discover the story behind RESPIRA+ and our commitment to combining technology with nature",
+      "mission": {
+        "title": "Our Mission",
+        "content": "At RESPIRA+, we believe in combining the power of technology with the purity of natural extracts to create revolutionary breathing experiences. Our mission is to provide safe, effective, and enjoyable alternatives that enhance your daily life while maintaining the highest standards of quality and safety."
+      },
+      "features": {
+        "technology": {
+          "title": "Advanced Technology",
+          "subtitle": "Innovation Meets Nature",
+          "description": "We combine cutting-edge technology with natural extracts to create the perfect breathing experience. Our advanced systems ensure consistent quality and purity in every product."
+        },
+        "extraction": {
+          "title": "Cold Extraction",
+          "subtitle": "Purity & Safety Guaranteed",
+          "description": "Our proprietary cold extraction method preserves the natural compounds and ensures maximum purity. This gentle process maintains the integrity of our herbal extracts without compromising safety."
+        },
+        "natural": {
+          "title": "Natural Extracts",
+          "subtitle": "Pure & Organic",
+          "description": "We source the finest natural herbs and plants from trusted suppliers. Every ingredient is carefully selected for its purity and effectiveness in promoting better breathing."
+        }
+      },
+      "values": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "Constantly pushing boundaries in natural extract technology"
+        },
+        "purity": {
+          "title": "Purity",
+          "description": "Maintaining the highest standards of ingredient quality"
+        },
+        "safety": {
+          "title": "Safety",
+          "description": "Ensuring every product meets strict safety protocols"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "Committed to environmentally responsible practices"
+        }
+      },
+      "highlight": "Cold Extraction method ensures purity & safety.",
+      "cta": "Join thousands who have discovered the perfect blend of technology and nature with RESPIRA+"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Any question or remark? just write us a message",
+      "businessHours": "Business Hours",
+      "hours": {
+        "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
+        "saturday": "Saturday: 10:00 AM - 4:00 PM",
+        "sunday": "Sunday: Closed"
+      },
+      "timezone": "All times are in Malaysia Time (GMT+8)"
+    },
+    "qrVerification": {
+      "title": "Product Verification",
+      "subtitle": "Verify the authenticity of your RESPIRA+ product using QR code or serial number",
+      "formTitle": "Product Authentication",
+      "formDescription": "Enter your product's serial number or scan the QR code to verify authenticity",
+      "inputLabel": "Serial Number / QR Code",
+      "inputPlaceholder": "Enter serial number or scan QR code",
+      "verifyButton": "Verify Product",
+      "scanButton": "Scan QR Code",
+      "successTitle": "Product Verified",
+      "errorTitle": "Verification Failed",
+      "productInfo": "Product Information",
+      "serialNumber": "Serial Number",
+      "productType": "Product Type",
+      "manufacturer": "Manufacturer",
+      "verifiedAt": "Verified At",
+      "verifyAnother": "Verify Another Product",
+      "downloadCertificate": "Download Certificate",
+      "tryAgain": "Try Again",
+      "messages": {
+        "genuine": "Congratulations! This is a genuine RESPIRA+ product.",
+        "fake": "Warning: This product may be counterfeit. Please contact customer support.",
+        "cameraNotSupported": "Camera access not supported. Please enter the serial number manually."
+      },
+      "errors": {
+        "emptyInput": "Please enter a serial number or scan a QR code."
+      },
+      "securityFeatures": {
+        "title": "Security Features",
+        "antiCounterfeit": {
+          "title": "Anti-Counterfeit Protection",
+          "description": "Advanced QR code technology prevents product duplication and ensures authenticity."
+        },
+        "secureDatabase": {
+          "title": "Secure Database",
+          "description": "All product serial numbers are stored in our secure, encrypted database."
+        },
+        "realTime": {
+          "title": "Real-time Verification",
+          "description": "Instant verification results with up-to-date product information."
+        }
+      }
+    }
+  },
+  "$vuetify": {
+    "badge": "Badge",
+    "noDataText": "No data available",
+    "close": "Close",
+    "open": "open",
+    "loading": "loading",
+    "carousel": {
+      "ariaLabel": {
+        "delimiter": "delimiter"
+      }
+    },
+    "dataFooter": {
+      "itemsPerPageText": "Items per page:",
+      "itemsPerPageAll": "All",
+      "pageText": "{0}-{1} of {2}",
+      "firstPage": "First Page",
+      "prevPage": "Previous Page",
+      "nextPage": "Next Page",
+      "lastPage": "Last Page"
+    },
+    "pagination": {
+      "ariaLabel": {
+        "root": "root",
+        "previous": "previous",
+        "first": "first",
+        "last": "last",
+        "next": "next",
+        "currentPage": "currentPage",
+        "page": "page"
+      }
+    },
+    "input": {
+      "clear": "clear",
+      "appendAction": "appendAction",
+      "prependAction": "prependAction",
+      "counterSize": "counterSize",
+      "otp": "otp"
+    },
+    "fileInput": {
+      "counterSize": "counterSize"
+    },
+    "rating": {
+      "ariaLabel": {
+        "item": "item"
+      }
+    }
+  }
+}

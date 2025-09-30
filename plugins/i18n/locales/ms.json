@@ -1,0 +1,388 @@
+{
+  "UI Elements": "Elemen UI",
+  "Forms & Tables": "Borang & Jadual",
+  "Pages": "Halaman",
+  "Charts & Maps": "Carta & Peta",
+  "Others": "Lain-lain",
+  "Typography": "Tipografi",
+  "Cards": "Kad",
+  "Basic": "Asas",
+  "Advance": "Lanjutan",
+  "Widgets": "Widget",
+  "Components": "Komponen",
+  "Alert": "Amaran",
+  "Close Alert": "Tutup Amaran",
+  "Avatar": "Avatar",
+  "Badge": "Lencana",
+  "Button": "Butang",
+  "Calendar": "Kalendar",
+  "Kanban": "Kanban",
+  "Image": "Imej",
+  "Pagination": "Penomboran",
+  "Progress Circular": "Kemajuan Bulat",
+  "Progress Linear": "Kemajuan Linear",
+  "Autocomplete": "Autolengkap",
+  "Tooltip": "Petua Alat",
+  "Slider": "Penggelongsor",
+  "Date Time Picker": "Pemilih Tarikh Masa",
+  "Select": "Pilih",
+  "Switch": "Tukar",
+  "Checkbox": "Kotak Centang",
+  "Radio": "Radio",
+  "Textarea": "Kawasan Teks",
+  "Rating": "Penilaian",
+  "File Input": "Input Fail",
+  "Otp Input": "Input OTP",
+  "Form Layout": "Susun Atur Borang",
+  "Form Validation": "Pengesahan Borang",
+  "Charts": "Carta",
+  "Apex Chart": "Carta Apex",
+  "Chartjs": "Chartjs",
+  "Account Settings": "Tetapan Akaun",
+  "User Profile": "Profil Pengguna",
+  "FAQ": "Soalan Lazim",
+  "Dialog Examples": "Contoh Dialog",
+  "Pricing": "Harga",
+  "List": "Senarai",
+  "Edit": "Edit",
+  "Nav Levels": "Tahap Nav",
+  "Level 2.1": "Tahap 2.1",
+  "Level 2.2": "Tahap 2.2",
+  "Level 3.1": "Tahap 3.1",
+  "Level 3.2": "Tahap 3.2",
+  "Raise Support": "Mohon Sokongan",
+  "Documentation": "Dokumentasi",
+  "Dashboards": "Dashboard",
+  "Analytics": "Analitik",
+  "Apps & Pages": "Aplikasi & Halaman",
+  "Email": "E-mel",
+  "Chat": "Chat",
+  "Invoice": "Invois",
+  "Preview": "Pratonton",
+  "Add": "Tambah",
+  "User": "Pengguna",
+  "View": "Lihat",
+  "Login v1": "Log Masuk v1",
+  "Login v2": "Log Masuk v2",
+  "Login": "Log Masuk",
+  "Register v1": "Daftar v1",
+  "Register v2": "Daftar v2",
+  "Register": "Daftar",
+  "Forget Password v1": "Lupa Kata Laluan v1",
+  "Forget Password v2": "Lupa Kata Laluan v2",
+  "Forgot Password v1": "Lupa Kata Laluan v1",
+  "Forgot Password v2": "Lupa Kata Laluan v2",
+  "Forgot Password": "Lupa Kata Laluan",
+  "Reset Password v1": "Set Semula Kata Laluan v1",
+  "Reset Password v2": "Set Semula Kata Laluan v2",
+  "Reset Password": "Set Semula Kata Laluan",
+  "Miscellaneous": "Pelbagai",
+  "Coming Soon": "Akan Datang",
+  "Not Authorized": "Tidak Dibenarkan",
+  "Under Maintenance": "Dalam Penyenggaraan",
+  "Error": "Ralat",
+  "Statistics": "Statistik",
+  "Actions": "Tindakan",
+  "Access Control": "Kawalan Akses",
+  "User Interface": "Antaramuka Pengguna",
+  "CRM": "CRM",
+  "eCommerce": "eCommerce",
+  "Icons": "Ikon",
+  "Chip": "Cip",
+  "Dialog": "Dialog",
+  "Expansion Panel": "Panel Pengembangan",
+  "Combobox": "Kotak Gabungan",
+  "Textfield": "Medan Teks",
+  "Range Slider": "Penggelongsor Julat",
+  "Menu": "Menu",
+  "Snackbar": "Bar Snek",
+  "Tabs": "Tab",
+  "Form Elements": "Elemen Borang",
+  "Form Layouts": "Susun Atur Borang",
+  "Authentication": "Pengesahan",
+  "Page Not Found - 404": "Halaman Tidak Ditemui - 404",
+  "Not Authorized - 401": "Tidak Dibenarkan - 401",
+  "Server Error - 500": "Ralat Pelayan - 500",
+  "2": "2",
+  "Forms": "Borang",
+  "Timeline": "Garis Masa",
+  "Disabled Menu": "Menu Dilumpuhkan",
+  "Help Center": "Pusat Bantuan",
+  "Verify Email": "Sahkan E-mel",
+  "Verify Email v1": "Sahkan E-mel v1",
+  "Verify Email v2": "Sahkan E-mel v2",
+  "Two Steps": "Dua Langkah",
+  "Two Steps v1": "Dua Langkah v1",
+  "Two Steps v2": "Dua Langkah v2",
+  "Custom Input": "Input Tersuai",
+  "Extensions": "Sambungan",
+  "Tour": "Lawatan",
+  "Register Multi-Steps": "Daftar Pelbagai Langkah",
+  "Wizard Examples": "Contoh Wizard",
+  "Checkout": "Bayar",
+  "Create Deal": "Cipta Tawaran",
+  "Property Listing": "Senarai Hartanah",
+  "Roles & Permissions": "Peranan & Kebenaran",
+  "Roles": "Peranan",
+  "Simple Table": "Jadual Mudah",
+  "Tables": "Jadual",
+  "Data Table": "Jadual Data",
+  "Permissions": "Kebenaran",
+  "Apps": "Aplikasi",
+  "Misc": "Pelbagai",
+  "Wizard Pages": "Halaman Wizard",
+  "Form Wizard": "Wizard Borang",
+  "Numbered": "Bernombor",
+  "3": "3",
+  "ecommerce": "ecommerce",
+  "Ecommerce": "Ecommerce",
+  "Editors": "Editor",
+  "Front Pages": "Halaman Depan",
+  "Landing": "Landing",
+  "checkout": "bayar",
+  "Payment": "Pembayaran",
+  "Swiper": "Swiper",
+  "Product": "Produk",
+  "Category": "Kategori",
+  "Order": "Pesanan",
+  "Details": "Butiran",
+  "Customer": "Pelanggan",
+  "Manage Review": "Urus Ulasan",
+  "Referrals": "Rujukan",
+  "Settings": "Tetapan",
+  "Overview": "Gambaran Keseluruhan",
+  "My Course": "Kursus Saya",
+  "Course Details": "Butiran Kursus",
+  "Academy": "Akademi",
+  "Logistics": "Logistik",
+  "Dashboard": "Dashboard",
+  "Fleet": "Armada",
+  "5": "5",
+  "10": "10",
+  "20": "20",
+  "25": "25",
+  "50": "50",
+  "100": "100",
+  "Landing Page": {
+    "navigation": {
+      "home": "Utama",
+      "products": "Produk",
+      "whyChoose": "Mengapa Pilih",
+      "aboutUs": "Tentang Kami",
+      "qrVerification": "Sahkan Produk",
+      "contact": "Hubungi Kami"
+    },
+    "hero": {
+      "tagline": "RESPIRA+ — Nafas Murni, Kehidupan Murni",
+      "title": "Alami rasa segar ekstrak herba 100%",
+      "subtitle": "Sifar nikotin, keseronokan tulen. Temui koleksi produk wap herba premium kami yang direka untuk gaya hidup yang lebih sihat.",
+      "shopNow": "Beli Sekarang"
+    },
+    "products": {
+      "title": "Produk Kami",
+      "subtitle": "Temui koleksi ekstrak herba 100% kami",
+      "description": "Temui koleksi rasa ekstrak herba 100% kami",
+      "items": {
+        "goldenSweet": {
+          "name": "Golden Sweet",
+          "flavor": "Tembikai Hami",
+          "tagline": "Bernafas Bebas, Hidup Sepenuhnya"
+        },
+        "easyBreathe": {
+          "name": "Easy Breathe",
+          "flavor": "Pudina",
+          "tagline": "Kesan penyejukan segar, menenangkan fikiran"
+        },
+        "summerBreeze": {
+          "name": "Summer Breeze",
+          "flavor": "Tembikai",
+          "tagline": "Aroma buah yang manis, sensasi menyegarkan"
+        },
+        "calmDream": {
+          "name": "Calm Dream",
+          "flavor": "Lavender",
+          "tagline": "Kelonggaran & faedah menenangkan"
+        },
+        "zestySpark": {
+          "name": "Zesty Spark",
+          "flavor": "Lemon",
+          "tagline": "Letupan sitrus yang menyegarkan, bertenaga"
+        },
+        "pureFresh": {
+          "name": "Pure Fresh",
+          "flavor": "Anggur Hijau",
+          "tagline": "Rasa anggur yang segar & berair, perasaan menyegarkan"
+        }
+      },
+      "features": {
+        "pureExtract": "100% Ekstrak Herba Tulen",
+        "coldExtract": "Ekstrak Sejuk",
+        "noNicotine": "0% Nikotin",
+        "herbalExtract": "100% Ekstrak Herba"
+      }
+    },
+    "whyChoose": {
+      "title": "Mengapa Pilih RESPIRA+",
+      "subtitle": "Temui apa yang menjadikan RESPIRA+ pilihan yang sempurna untuk pengalaman yang murni dan menyegarkan",
+      "features": {
+        "noNicotine": "Tidak Ketagihan",
+        "natural": "Ekstrak Herba",
+        "portable": "Reka Bentuk Stylish",
+        "safe": "Menyegarkan"
+      },
+      "descriptions": {
+        "noNicotine": "Nikmati pengalaman yang murni tanpa bahan berbahaya. Produk kami mengandungi sifar nikotin dan tar, menjadikannya tidak ketagihan sepenuhnya.",
+        "natural": "Diperbuat daripada herba dan tumbuhan semula jadi yang dipilih dengan teliti. Bahan organik tulen untuk pengalaman yang paling menyegarkan.",
+        "portable": "Reka bentuk padat dan ringan yang sesuai dengan sempurna di dalam poket anda. Mudah digunakan dengan estetika moden yang anggun.",
+        "safe": "Diuji untuk keselamatan dan kesucian. Alami sensasi yang bersih dan menyegarkan yang membangkitkan deria anda secara semula jadi."
+      },
+      "cta": "Sertai beribu-ribu pelanggan yang berpuas hati yang telah beralih kepada RESPIRA+"
+    },
+    "about": {
+      "title": "Tentang Kami",
+      "subtitle": "Temui kisah di sebalik RESPIRA+ dan komitmen kami untuk menggabungkan teknologi dengan alam semula jadi",
+      "mission": {
+        "title": "Misi Kami",
+        "content": "Di RESPIRA+, kami percaya dalam menggabungkan kuasa teknologi dengan kesucian ekstrak semula jadi untuk mencipta pengalaman pernafasan yang revolusioner. Misi kami adalah untuk menyediakan alternatif yang selamat, berkesan, dan menyeronokkan yang meningkatkan kehidupan harian anda sambil mengekalkan standard kualiti dan keselamatan yang tertinggi."
+      },
+      "features": {
+        "technology": {
+          "title": "Teknologi Canggih",
+          "subtitle": "Inovasi Bertemu Alam",
+          "description": "Kami menggabungkan teknologi canggih dengan ekstrak semula jadi untuk mencipta pengalaman pernafasan yang sempurna. Sistem canggih kami memastikan kualiti dan kesucian yang konsisten dalam setiap produk."
+        },
+        "extraction": {
+          "title": "Pengekstrakan Sejuk",
+          "subtitle": "Kesucian & Keselamatan Dijamin",
+          "description": "Kaedah pengekstrakan sejuk proprietari kami memelihara sebatian semula jadi dan memastikan kesucian maksimum. Proses lembut ini mengekalkan integriti ekstrak herba kami tanpa menjejaskan keselamatan."
+        },
+        "natural": {
+          "title": "Ekstrak Semula Jadi",
+          "subtitle": "Tulen & Organik",
+          "description": "Kami mendapatkan herba dan tumbuhan semula jadi terbaik daripada pembekal yang dipercayai. Setiap ramuan dipilih dengan teliti untuk kesucian dan keberkesanannya dalam mempromosikan pernafasan yang lebih baik."
+        }
+      },
+      "values": {
+        "innovation": {
+          "title": "Inovasi",
+          "description": "Sentiasa menolak sempadan dalam teknologi ekstrak semula jadi"
+        },
+        "purity": {
+          "title": "Kesucian",
+          "description": "Mengekalkan standard kualiti ramuan yang tertinggi"
+        },
+        "safety": {
+          "title": "Keselamatan",
+          "description": "Memastikan setiap produk memenuhi protokol keselamatan yang ketat"
+        },
+        "sustainability": {
+          "title": "Kelestarian",
+          "description": "Komited kepada amalan yang bertanggungjawab terhadap alam sekitar"
+        }
+      },
+      "highlight": "Kaedah Pengekstrakan Sejuk memastikan kesucian & keselamatan.",
+      "cta": "Sertai beribu-ribu orang yang telah menemui gabungan sempurna teknologi dan alam semula jadi dengan RESPIRA+"
+    },
+    "contact": {
+      "title": "Hubungi Kami",
+      "subtitle": "Sebarang soalan atau komen? hanya tulis kami mesej",
+      "businessHours": "Waktu Perniagaan",
+      "hours": {
+        "weekdays": "Isnin - Jumaat: 9:00 AM - 6:00 PM",
+        "saturday": "Sabtu: 10:00 AM - 4:00 PM",
+        "sunday": "Ahad: Tutup"
+      },
+      "timezone": "Semua masa dalam Waktu Malaysia (GMT+8)"
+    },
+    "qrVerification": {
+      "title": "Pengesahan Produk",
+      "subtitle": "Sahkan keaslian produk RESPIRA+ anda menggunakan kod QR atau nombor siri",
+      "formTitle": "Pengesahan Produk",
+      "formDescription": "Masukkan nombor siri produk anda atau imbas kod QR untuk mengesahkan keaslian",
+      "inputLabel": "Nombor Siri / Kod QR",
+      "inputPlaceholder": "Masukkan nombor siri atau imbas kod QR",
+      "verifyButton": "Sahkan Produk",
+      "scanButton": "Imbas Kod QR",
+      "successTitle": "Produk Disahkan",
+      "errorTitle": "Pengesahan Gagal",
+      "productInfo": "Maklumat Produk",
+      "serialNumber": "Nombor Siri",
+      "productType": "Jenis Produk",
+      "manufacturer": "Pengilang",
+      "verifiedAt": "Disahkan Pada",
+      "verifyAnother": "Sahkan Produk Lain",
+      "downloadCertificate": "Muat Turun Sijil",
+      "tryAgain": "Cuba Lagi",
+      "messages": {
+        "genuine": "Tahniah! Ini adalah produk RESPIRA+ yang asli.",
+        "fake": "Amaran: Produk ini mungkin palsu. Sila hubungi sokongan pelanggan.",
+        "cameraNotSupported": "Akses kamera tidak disokong. Sila masukkan nombor siri secara manual."
+      },
+      "errors": {
+        "emptyInput": "Sila masukkan nombor siri atau imbas kod QR."
+      },
+      "securityFeatures": {
+        "title": "Ciri Keselamatan",
+        "antiCounterfeit": {
+          "title": "Perlindungan Anti-Palsu",
+          "description": "Teknologi kod QR canggih mencegah penduaan produk dan memastikan keaslian."
+        },
+        "secureDatabase": {
+          "title": "Pangkalan Data Selamat",
+          "description": "Semua nombor siri produk disimpan dalam pangkalan data yang selamat dan disulitkan."
+        },
+        "realTime": {
+          "title": "Pengesahan Masa Nyata",
+          "description": "Hasil pengesahan serta-merta dengan maklumat produk terkini."
+        }
+      }
+    }
+  },
+  "$vuetify": {
+    "badge": "Lencana",
+    "noDataText": "Tiada data tersedia",
+    "close": "Tutup",
+    "open": "buka",
+    "loading": "memuatkan",
+    "carousel": {
+      "ariaLabel": {
+        "delimiter": "pembatas"
+      }
+    },
+    "dataFooter": {
+      "itemsPerPageText": "Item setiap halaman:",
+      "itemsPerPageAll": "Semua",
+      "pageText": "{0}-{1} dari {2}",
+      "firstPage": "Halaman Pertama",
+      "prevPage": "Halaman Sebelumnya",
+      "nextPage": "Halaman Seterusnya",
+      "lastPage": "Halaman Terakhir"
+    },
+    "pagination": {
+      "ariaLabel": {
+        "root": "akar",
+        "previous": "sebelumnya",
+        "first": "pertama",
+        "last": "terakhir",
+        "next": "seterusnya",
+        "currentPage": "halamanSemasa",
+        "page": "halaman"
+      }
+    },
+    "input": {
+      "clear": "padam",
+      "appendAction": "tindakanTambah",
+      "prependAction": "tindakanTambah",
+      "counterSize": "saizPembilang",
+      "otp": "otp"
+    },
+    "fileInput": {
+      "counterSize": "saizPembilang"
+    },
+    "rating": {
+      "ariaLabel": {
+        "item": "item"
+      }
+    }
+  }
+}
