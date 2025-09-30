@@ -176,6 +176,7 @@ export default defineNuxtConfig({
     "@nuxtjs/device",
     "@sidebase/nuxt-auth",
     "@pinia/nuxt",
+    "nuxt-qrcode",
 
     // "@nuxtjs/supabase",
   ],

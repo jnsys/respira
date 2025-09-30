@@ -1,5 +1,4 @@
 <script setup>
-// import { Html5QrcodeScanner } from "html5-qrcode";
 const { t } = useI18n();
 
 // QR verification states
@@ -7,12 +6,14 @@ const qrInput = ref("");
 const verificationResult = ref(null);
 const isLoading = ref(false);
 const isScanning = ref(false);
-const scanner = ref(null);
-const scanContainer = ref(null);
-const Html5QrcodeScanner = ref(null);
-const availableCameras = ref([]);
-const selectedCameraId = ref(null);
-const cameraPermissionGranted = ref(false);
+const showScanner = ref(false);
+const qrStream = ref(null);
+
+// Error state management (following the documentation pattern)
+const state = reactive({
+  errorMsg: "",
+  error: false,
+});
 
 // Sample verification logic (replace with actual API call)
 const verifyProduct = async () => {
@@ -62,43 +63,38 @@ const resetVerification = () => {
   isLoading.value = false;
 };
 
-// Enumerate available cameras
-const enumerateCameras = async () => {
-  try {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-      return [];
-    }
+// Handle QR detection (following the documentation pattern)
+const onDetect = (detectedCodes) => {
+  if (detectedCodes.length > 0) {
+    const code = detectedCodes[0]; // Get the first detected code
+    console.log("QR Code detected:", code.rawValue);
 
-    // Request permission first to get device labels
-    await navigator.mediaDevices.getUserMedia({ video: true });
-    cameraPermissionGranted.value = true;
+    qrInput.value = code.rawValue;
+    isScanning.value = false;
+    showScanner.value = false;
 
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    const videoDevices = devices.filter(
-      (device) => device.kind === "videoinput"
-    );
-
-    availableCameras.value = videoDevices.map((device) => ({
-      deviceId: device.deviceId,
-      label: device.label || `Camera ${device.deviceId.slice(0, 8)}`,
-      kind: device.kind,
-    }));
-
-    // Select the first available camera or prefer back camera
-    const backCamera = videoDevices.find(
-      (device) =>
-        device.label.toLowerCase().includes("back") ||
-        device.label.toLowerCase().includes("rear")
-    );
-
-    selectedCameraId.value = backCamera?.deviceId || videoDevices[0]?.deviceId;
-
-    return availableCameras.value;
-  } catch (error) {
-    console.error("Error enumerating cameras:", error);
-    cameraPermissionGranted.value = false;
-    return [];
+    // Automatically verify the scanned code
+    setTimeout(() => {
+      verifyProduct();
+    }, 500);
   }
+};
+
+// Handle error (following the documentation pattern)
+const onError = (err) => {
+  console.error("QR scan error:", err);
+  state.error = true;
+  state.errorMsg = `[${err.name}]: ${err.message}`;
+  isScanning.value = false;
+  showScanner.value = false;
+};
+
+// Reset error state
+const resetError = () => {
+  state.error = false;
+  state.errorMsg = "";
+  showScanner.value = true;
+  isScanning.value = true;
 };
 
 const handleScan = async () => {
@@ -107,127 +103,75 @@ const handleScan = async () => {
     return;
   }
 
-  try {
-    // Check if we're on client side
-    if (process.client) {
-      // Check if camera is supported and we're in a secure context
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert(t("Landing Page.qrVerification.messages.cameraNotSupported"));
-        return;
-      }
-
-      // Check if we're in a secure context (HTTPS or localhost)
-      if (!window.isSecureContext) {
-        alert(t("Landing Page.qrVerification.messages.requiresHttps"));
-        return;
-      }
-
-      // Enumerate available cameras first
-      const cameras = await enumerateCameras();
-      if (cameras.length === 0) {
-        alert(t("Landing Page.qrVerification.messages.noCamerasFound"));
-        return;
-      }
-
-      // Dynamically import the library only on client side
-      if (!Html5QrcodeScanner.value) {
-        const { Html5QrcodeScanner } = await import("html5-qrcode");
-        Html5QrcodeScanner.value = Html5QrcodeScanner;
-      }
-
-      isScanning.value = true;
-
-      // Wait for next tick to ensure DOM is ready
-      await nextTick();
-
-      // Create scanner instance with specific camera
-      scanner.value = new Html5QrcodeScanner.value(
-        "qr-reader",
-        {
-          fps: 10,
-          qrbox: { width: 250, height: 250 },
-          aspectRatio: 1.0,
-          showTorchButtonIfSupported: true,
-          showZoomSliderIfSupported: true,
-          supportedScanTypes: [
-            Html5QrcodeScanner.value.ScanType.SCAN_TYPE_CAMERA,
-          ],
-        },
-        false
-      );
-
-      // Start scanning with selected camera
-      scanner.value.render(
-        (decodedText) => {
-          // QR code detected
-          qrInput.value = decodedText;
-          stopScanning();
-
-          // Automatically verify the scanned code
-          setTimeout(() => {
-            verifyProduct();
-          }, 500);
-        },
-        (error) => {
-          // Scanning error (usually just no QR code detected)
-          console.log("QR scan error:", error);
-        }
-      );
-    } else {
-      alert(t("Landing Page.qrVerification.messages.cameraNotSupported"));
+  // Simple camera access check
+  if (process.client) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert("Camera access not supported on this device.");
+      return;
     }
-  } catch (error) {
-    console.error("Camera access error:", error);
-    isScanning.value = false;
-    if (error.name === "NotAllowedError") {
-      alert(t("Landing Page.qrVerification.messages.cameraAccessDenied"));
-    } else if (error.name === "NotFoundError") {
-      alert(t("Landing Page.qrVerification.messages.noCamerasFound"));
-    } else {
-      alert(t("Landing Page.qrVerification.messages.cameraError"));
+
+    if (!window.isSecureContext) {
+      alert(
+        "Camera access requires a secure connection (HTTPS). Please use HTTPS or localhost."
+      );
+      return;
     }
+
+    isScanning.value = true;
+    showScanner.value = true;
+    state.error = false;
+    state.errorMsg = "";
+
+    // Start the QR stream after the component is mounted
+    await nextTick();
+  } else {
+    alert("Camera access not supported on this device.");
   }
 };
 
 const stopScanning = () => {
-  if (scanner.value) {
-    scanner.value.clear();
-    scanner.value = null;
-  }
   isScanning.value = false;
+  showScanner.value = false;
+  state.error = false;
+  state.errorMsg = "";
 };
 
-// Helper functions
-const getSelectedCameraLabel = () => {
-  const selectedCamera = availableCameras.value.find(
-    (camera) => camera.deviceId === selectedCameraId.value
-  );
-  return (
-    selectedCamera?.label || $t("Landing Page.qrVerification.unknownCamera")
-  );
-};
-
-const onCameraChange = () => {
-  if (isScanning.value) {
-    stopScanning();
-    // Restart scanning with new camera
-    setTimeout(() => {
-      handleScan();
-    }, 500);
-  }
-};
-
-// Initialize cameras on component mount
-onMounted(async () => {
-  if (process.client) {
-    await enumerateCameras();
-  }
-});
-
-// Cleanup on component unmount
-onUnmounted(() => {
-  stopScanning();
-});
+const securityFeatures = computed(() => [
+  {
+    icon: "tabler-shield-check",
+    title: t(
+      "Landing Page.qrVerification.securityFeatures.antiCounterfeit.title"
+    ),
+    description: t(
+      "Landing Page.qrVerification.securityFeatures.antiCounterfeit.description"
+    ),
+    color: "#28a745",
+    bgColor: "rgba(40, 167, 69, 0.1)",
+    borderColor: "rgba(40, 167, 69, 0.2)",
+  },
+  {
+    icon: "tabler-database",
+    title: t(
+      "Landing Page.qrVerification.securityFeatures.secureDatabase.title"
+    ),
+    description: t(
+      "Landing Page.qrVerification.securityFeatures.secureDatabase.description"
+    ),
+    color: "#17a2b8",
+    bgColor: "rgba(23, 162, 184, 0.1)",
+    borderColor: "rgba(23, 162, 184, 0.2)",
+  },
+  {
+    icon: "tabler-clock",
+    title: t("Landing Page.qrVerification.securityFeatures.realTime.title"),
+    description: t(
+      "Landing Page.qrVerification.securityFeatures.realTime.description"
+    ),
+    color: "#6f42c1",
+    bgColor: "rgba(111, 66, 193, 0.1)",
+    borderColor: "rgba(111, 66, 193, 0.2)",
+  },
+]);
 </script>
 
 <template>
@@ -338,25 +282,8 @@ onUnmounted(() => {
               </VRow>
             </VForm>
 
-            <!-- Camera Selection (shown when multiple cameras available) -->
-            <div
-              v-if="availableCameras.length > 1 && cameraPermissionGranted"
-              class="camera-selection mt-4"
-            >
-              <VSelect
-                v-model="selectedCameraId"
-                :items="availableCameras"
-                item-title="label"
-                item-value="deviceId"
-                :label="$t('Landing Page.qrVerification.selectCamera')"
-                variant="outlined"
-                density="comfortable"
-                @update:model-value="onCameraChange"
-              />
-            </div>
-
-            <!-- QR Scanner Container -->
-            <div v-if="isScanning" class="qr-scanner-container mt-6">
+            <!-- QR Scanner -->
+            <div v-if="showScanner" class="qr-scanner-container mt-6">
               <div class="text-center mb-4">
                 <h6
                   class="text-h6 mb-2"
@@ -370,23 +297,42 @@ onUnmounted(() => {
                 >
                   {{ $t("Landing Page.qrVerification.scannerInstructions") }}
                 </p>
-                <div v-if="availableCameras.length > 0" class="mt-2">
-                  <VChip size="small" color="primary" variant="tonal">
-                    <VIcon start icon="tabler-camera" size="16" />
-                    {{ getSelectedCameraLabel() }}
-                  </VChip>
-                </div>
               </div>
-              <div
-                ref="scanContainer"
-                id="qr-reader"
-                style="
-                  border-radius: 12px;
-                  overflow: hidden;
-                  background: rgba(var(--v-theme-surface));
-                  border: 2px solid rgba(var(--v-theme-primary-rgb), 0.2);
-                "
-              ></div>
+
+              <!-- Nuxt QRCode Stream -->
+              <ClientOnly>
+                <QrcodeStream
+                  v-if="!state.error"
+                  ref="qrStream"
+                  @error="onError"
+                  @detect="onDetect"
+                  style="
+                    border-radius: 12px;
+                    overflow: hidden;
+                    background: rgba(var(--v-theme-surface));
+                    border: 2px solid rgba(var(--v-theme-primary-rgb), 0.2);
+                    max-width: 400px;
+                    margin: 0 auto;
+                  "
+                />
+                <div v-else class="error-state text-center pa-4">
+                  <VIcon
+                    icon="tabler-alert-circle"
+                    size="48"
+                    color="error"
+                    class="mb-4"
+                  />
+                  <h3
+                    class="text-h6 mb-4"
+                    style="color: rgb(var(--v-theme-error))"
+                  >
+                    {{ state.errorMsg }}
+                  </h3>
+                  <VBtn color="primary" @click="resetError">
+                    Reset Camera
+                  </VBtn>
+                </div>
+              </ClientOnly>
             </div>
 
             <!-- Verification Result -->
@@ -637,7 +583,7 @@ onUnmounted(() => {
         </VCol>
       </VRow>
 
-      <!-- Security Features -->
+      <!-- Security Features Section -->
       <VRow class="mt-12">
         <VCol cols="12">
           <h5
@@ -658,12 +604,13 @@ onUnmounted(() => {
         >
           <VCard
             flat
-            class="security-feature-card mb-6"
+            class="feature-card mb-6"
             elevation="2"
             :style="{
               backgroundColor: feature.bgColor,
               border: `2px solid ${feature.borderColor}`,
               borderRadius: '16px',
+              transition: 'all 0.3s ease-in-out',
             }"
           >
             <VCardText class="text-center pa-6">
@@ -688,98 +635,42 @@ onUnmounted(() => {
   </VContainer>
 </template>
 
-<script>
-export default {
-  computed: {
-    securityFeatures() {
-      const { t } = useI18n();
-      return [
-        {
-          icon: "tabler-shield-check",
-          title: t(
-            "Landing Page.qrVerification.securityFeatures.antiCounterfeit.title"
-          ),
-          description: t(
-            "Landing Page.qrVerification.securityFeatures.antiCounterfeit.description"
-          ),
-          color: "#28a745",
-          bgColor: "rgba(40, 167, 69, 0.1)",
-          borderColor: "rgba(40, 167, 69, 0.2)",
-        },
-        {
-          icon: "tabler-database",
-          title: t(
-            "Landing Page.qrVerification.securityFeatures.secureDatabase.title"
-          ),
-          description: t(
-            "Landing Page.qrVerification.securityFeatures.secureDatabase.description"
-          ),
-          color: "#17a2b8",
-          bgColor: "rgba(23, 162, 184, 0.1)",
-          borderColor: "rgba(23, 162, 184, 0.2)",
-        },
-        {
-          icon: "tabler-clock",
-          title: t(
-            "Landing Page.qrVerification.securityFeatures.realTime.title"
-          ),
-          description: t(
-            "Landing Page.qrVerification.securityFeatures.realTime.description"
-          ),
-          color: "#6f42c1",
-          bgColor: "rgba(111, 66, 193, 0.1)",
-          borderColor: "rgba(111, 66, 193, 0.2)",
-        },
-      ];
-    },
-  },
-};
-</script>
-
 <style lang="scss" scoped>
 .qr-verification-section {
-  padding: 6rem 0;
-}
+  padding: 5rem 0;
 
-.verification-card {
-  border-radius: 20px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(var(--v-theme-primary-rgb), 0.15);
+  .headers {
+    margin-bottom: 3rem;
   }
-}
 
-.security-feature-card {
-  transition: all 0.3s ease;
-  border-radius: 16px;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(
+      135deg,
+      rgb(var(--v-theme-primary)) 0%,
+      rgb(var(--v-theme-secondary)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-}
 
-.section-title {
-  background: linear-gradient(
-    135deg,
-    rgb(var(--v-theme-primary)),
-    rgb(var(--v-theme-secondary))
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 1.2;
-}
+  .verification-card {
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(var(--v-theme-primary-rgb), 0.15);
+    }
+  }
 
-.product-info {
-  background: rgba(var(--v-theme-surface), 0.5);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-top: 1rem;
+  .feature-card {
+    transition: all 0.3s ease;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
 
 @media (max-width: 960px) {
@@ -860,5 +751,14 @@ export default {
   border-radius: 8px;
   padding: 8px;
   margin: -8px;
+}
+
+/* QR Scanner Styling */
+.qr-scanner-container {
+  .nuxt-qrcode {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 }
 </style>
